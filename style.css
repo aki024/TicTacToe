@@ -1,0 +1,23 @@
+    * {
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    border: 1px solid red;
+}
+
+.gameBoard {
+    margin: 0 auto;
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.square {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    font-size: 96px;
