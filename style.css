@@ -1,68 +1,183 @@
-        * {
-            padding: 0;
-            margin: 0;
-        }
-        
-        div {
-            border: 1px solid red;
-        }
-        
-        .gridContainer {
-            display: grid;
-            grid-template-rows: 1fr 5fr;
-            gap: 20px;
-        }
-        
-        .header {
-            display: grid;
-            grid-template-columns: 1fr 4fr 1fr;
-        }
-        
-        .player1,
-        .player2 {
-            display: grid;
-            grid-template-columns: 1fr 4fr;
-            grid-template-rows: 2fr 1fr;
-        }
-        
-        .title {
-            display: grid;
-            grid-template-columns: 1fr 4fr 1fr;
-        }
-        
-        .main {
-            display: grid;
-            grid-template-columns: 1fr 4fr 1fr;
-        }
-        
-        .statusP1,
-        .statusP2 {}
-        
-        .gameBoard {
-            margin: 0 auto;
-            height: 500px;
-            width: 500px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-            display: none;
-        }
-        
-        .square {
-            display: grid;
-            justify-items: center;
-            align-items: center;
-            font-size: 96px;
-        }
-        
-        .inputNames {
-            width: 300px;
-            height: 300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 2fr 2fr 1fr;
-            align-items: center;
-            justify-items: center;
-            padding: 20px;
-        }
+:root {
+    --header-color: #5585b5;
+    --main-color: #a2a8d3;
+    --header-text-color: #9fd3c7;
+}
+
+
+/*font-family: 'IBM Plex Sans Thai Looped', sans-serif;*/
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+/*Button*/
+
+.myButton {
+    box-shadow: inset 0px 1px 0px 0px #54a3f7;
+    background-color: #007dc1;
+    border-radius: 17px;
+    border: 3px solid #124d77;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 28px;
+    padding: 22px 18px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #154682;
+}
+
+.myButton:hover {
+    background-color: #0061a7;
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
+}
+
+body {
+    background-color: var(--main-color);
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    gap: 20px;
+    height: 90vh;
+    margin-bottom: 50px;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    background-color: var(--header-color);
+    box-shadow: 1px 1px #888888;
+}
+
+.player1,
+.player2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr;
+    justify-items: start;
+    align-items: center;
+    font-size: 22px;
+    padding: 10px;
+}
+
+.top2 {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.score1,
+.score2 {
+    display: grid;
+}
+
+.title {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.title>h1 {
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+    font-weight: 700;
+    font-size: 5rem;
+    color: var(--header-text-color);
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+.statusP1,
+.statusP2 {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.p1Win,
+.p2Win {
+    font-size: 2rem;
+}
+
+.p1Win {
+    padding-left: 20px;
+}
+
+.p2Win {
+    padding-right: 20px;
+}
+
+.gameBoard {
+    margin: 0 auto;
+    height: 400px;
+    width: 400px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    display: none;
+    border: 2px solid black;
+}
+
+.square {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    font-size: 96px;
+    border: 1px solid black;
+    background-color: silver;
+    font-family: monospace;
+}
+
+.square:hover {
+    background-color: var(--main-color);
+}
+
+.square.red {
+    background-color: red;
+}
+
+.inputNames {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 2fr 1fr;
+    align-items: center;
+    justify-items: center;
+    padding: 20px;
+    border: 1px solid black;
+    background-color: var(--header-color);
+    border-radius: 10px;
+    box-shadow: 1px 1px #888888;
+}
+
+.inputNames input {
+    border-radius: 10px;
+    height: 20px;
+    border-color: black;
+    padding-left: 5px;
+}
+
+.inputNames>button {
+    margin: 0 auto;
+}
+
+#newGame,
+#restartGame {
+    display: none;
+}

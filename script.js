@@ -1,5 +1,27 @@
 const gameBoard = (() => {
 
+    //QUERY SELECTORS
+    const restartButton = document.querySelector('#restartGame')
+    const newGameButton = document.querySelector('#newGame')
+
+    const player1Score = document.querySelector('.score1');
+    const player1Win = document.querySelector('.p1Win');
+    const inputOne = document.querySelector('#player1');
+    const displayOne = document.querySelector('.p1')
+
+    const player2Score = document.querySelector('.score2');
+    const player2Win = document.querySelector('.p2Win')
+    const inputTwo = document.querySelector('#player2');
+    const displayTwo = document.querySelector('.p2')
+
+
+    const startButton = document.querySelector('#submit');
+    const magic = document.querySelector('.gameBoard');
+    const magic2 = document.querySelector('.inputNames');
+    const squarez = document.querySelectorAll('.square');
+    //QUERY SELECTORS
+
+
     //PLAYER FACTORY
     const Player = (name, sign, turn) => {
 
@@ -49,13 +71,10 @@ const gameBoard = (() => {
     //Node to array function
     const nodeToArray = () => Array.from(getSquares());
 
-
     //add event listener
     const eventListener = () => getSquares().forEach(square => {
         square.addEventListener('click', mark)
-        const restartButton = document.querySelector('.restartGame')
         restartButton.addEventListener('click', restartGame);
-        const newGameButton = document.querySelector('.newGame')
         newGameButton.addEventListener('click', newGame);
     });
 
@@ -102,46 +121,58 @@ const gameBoard = (() => {
     //Check winner
     const checkWinner = () => {
         let winner = "";
+
         //x sign
         if (gameBoard.board[0] === 'x' && gameBoard.board[1] === 'x' && gameBoard.board[2] === 'x') {
             winner = player1.name;
-
-
-
+            colorSquares(0, 1, 2);
         } else if (gameBoard.board[3] === 'x' && gameBoard.board[4] === 'x' && gameBoard.board[5] === 'x') {
             winner = player1.name;
+            colorSquares(3, 4, 5);
         } else if (gameBoard.board[6] === 'x' && gameBoard.board[7] === 'x' && gameBoard.board[8] === 'x') {
             winner = player1.name;
+            colorSquares(6, 7, 8);
         } else if (gameBoard.board[0] === 'x' && gameBoard.board[3] === 'x' && gameBoard.board[6] === 'x') {
             winner = player1.name;
+            colorSquares(0, 3, 6);
         } else if (gameBoard.board[1] === 'x' && gameBoard.board[4] === 'x' && gameBoard.board[7] === 'x') {
             winner = player1.name;
+            colorSquares(1, 4, 7);
         } else if (gameBoard.board[2] === 'x' && gameBoard.board[5] === 'x' && gameBoard.board[8] === 'x') {
             winner = player1.name;
+            colorSquares(2, 5, 8);
         } else if (gameBoard.board[0] === 'x' && gameBoard.board[4] === 'x' && gameBoard.board[8] === 'x') {
             winner = player1.name;
+            colorSquares(0, 4, 8);
         } else if (gameBoard.board[2] === 'x' && gameBoard.board[4] === 'x' && gameBoard.board[6] === 'x') {
             winner = player1.name;
+            colorSquares(2, 4, 6);
             //o sign
         } else if (gameBoard.board[0] === 'o' && gameBoard.board[1] === 'o' && gameBoard.board[2] === 'o') {
             winner = player2.name;
+            colorSquares(0, 1, 2);
         } else if (gameBoard.board[3] === 'o' && gameBoard.board[4] === 'o' && gameBoard.board[5] === 'o') {
             winner = player2.name;
+            colorSquares(3, 4, 5);
         } else if (gameBoard.board[6] === 'o' && gameBoard.board[7] === 'o' && gameBoard.board[8] === 'o') {
             winner = player2.name;
+            colorSquares(6, 7, 8);
         } else if (gameBoard.board[0] === 'o' && gameBoard.board[3] === 'o' && gameBoard.board[6] === 'o') {
             winner = player2.name;
+            colorSquares(0, 3, 6);
         } else if (gameBoard.board[1] === 'o' && gameBoard.board[4] === 'o' && gameBoard.board[7] === 'o') {
             winner = player2.name;
+            colorSquares(1, 4, 7);
         } else if (gameBoard.board[2] === 'o' && gameBoard.board[5] === 'o' && gameBoard.board[8] === 'o') {
             winner = player2.name;
+            colorSquares(2, 5, 8);
         } else if (gameBoard.board[0] === 'o' && gameBoard.board[4] === 'o' && gameBoard.board[8] === 'o') {
             winner = player2.name;
+            colorSquares(0, 4, 8);
         } else if (gameBoard.board[2] === 'o' && gameBoard.board[4] === 'o' && gameBoard.board[6] === 'o') {
             winner = player2.name;
-        } else if (gameBoard.board.includes('')) {
-
-        } else {
+            colorSquares(2, 4, 6);
+        } else if (gameBoard.board.includes('')) {} else {
             winner = 'draw'
         }
         return winner;
@@ -150,12 +181,8 @@ const gameBoard = (() => {
     //player scores
     let p1score = 0;
     let p2score = 0;
-    const gameWin = () => {
-        const player1Score = document.querySelector('.score1');
-        const player1Win = document.querySelector('.p1Win');
-        const player2Score = document.querySelector('.score2');
-        const player2Win = document.querySelector('.p2Win');
 
+    const gameWin = () => {
         if (checkWinner() === player1.name) {
             p1score++;
             player1Score.innerHTML = `Score: ${p1score}`;
@@ -189,104 +216,106 @@ const gameBoard = (() => {
 
     //Input support
     const addPlayer = () => {
-        const inputOne = document.querySelector('#player1');
-        const inputTwo = document.querySelector('#player2');
+
         //set the display name
-        const displayOne = document.querySelector('.p1')
-        const displayTwo = document.querySelector('.p2')
 
-        displayOne.innerHTML = inputOne.value;
-        displayTwo.innerHTML = inputTwo.value;
+        if (inputOne.value != '' && inputTwo.value != '' && inputOne.value != inputTwo.value) {
+            displayOne.innerHTML = inputOne.value;
+            displayTwo.innerHTML = inputTwo.value;
+            player1Win.innerHTML = '';
+            newGameButton.style.display = 'block';
+            restartButton.style.display = 'block';
+            showBoard();
+            return { displayOne, displayTwo }
+        } else if (inputOne.value === '' || inputTwo.value === '') {
+            player1Win.innerHTML = "Player name can\'t be empty"
+        } else if (inputOne.value === inputTwo.value && inputOne.value != '' && inputTwo.value != '') {
+            player1Win.innerHTML = "Players can\'t have the same name"
 
-        showBoard();
-        return { displayOne, displayTwo }
 
+        }
     }
 
     //add event button
     const startGame = () => {
 
-            const startButton = document.querySelector('#submit');
-            startButton.addEventListener('click', addPlayer);
 
-        }
-        //restart game button
+        startButton.addEventListener('click', addPlayer);
+
+
+    }
+
+    //restart game button
     const restartGame = () => {
         gameBoard.board = ['', '', '', '', '', '', '', '', ''];
-        console.log(gameBoard.board);
         renderBoard();
 
-        const player1Win = document.querySelector('.p1Win');
-
-        const player2Win = document.querySelector('.p2Win');
         player1Win.innerHTML = "";
         player2Win.innerHTML = "";
         player1.turn = true;
         player2.turn = false;
         eventListener();
+        removeColors();
 
 
     }
 
     const newGame = () => {
-        const magic = document.querySelector('.gameBoard');
-        const magic2 = document.querySelector('.inputNames');
-        const input1 = document.querySelector('#player1')
-        const input2 = document.querySelector('#player2')
-        const displayOne = document.querySelector('.p1')
-        const displayTwo = document.querySelector('.p2')
-        const player1Win = document.querySelector('.p1Win');
-        const player2Win = document.querySelector('.p2Win');
-        const player1Score = document.querySelector('.score1');
-        const player2Score = document.querySelector('.score2');
-
         gameBoard.board = ['', '', '', '', '', '', '', '', ''];
         magic.style.display = "none";
 
 
         magic2.style.display = "grid";
-        input1.value = '';
-        input2.value = '';
+        inputOne.value = '';
+        inputTwo.value = '';
         displayOne.innerHTML = '';
         displayTwo.innerHTML = '';
         player1Win.innerHTML = "";
         player2Win.innerHTML = "";
-        player1Score.innerHTML = "Score: ";
-        player2Score.innerHTML = "Score: ";
+        player1Score.innerHTML = "Score: 0";
+        player2Score.innerHTML = "Score: 0";
         p1score = 0;
         p2score = 0;
         player1.turn = true;
         player2.turn = false;
-
-
-
+        newGameButton.style.display = 'none';
+        restartButton.style.display = 'none';
+        removeColors();
         renderBoard();
-
 
     }
 
     //hide input and show board
     const showBoard = () => {
-        const magic = document.querySelector('.gameBoard');
-        const magic2 = document.querySelector('.inputNames');
+
         magic2.style.display = "none";
         magic.style.display = "grid";
-        const displayOne = document.querySelector('.p1')
-        const displayTwo = document.querySelector('.p2')
+
         let p1 = displayOne.innerHTML;
         let p2 = displayTwo.innerHTML;
 
-
-
         eventListener();
-
 
         player1.name = `${p1}`;
         player2.name = `${p2}`;
 
     }
-    startGame();
-    return { board, getSquares, renderBoard, eventListener, nodeToArray, Player, player1, player2, showBoard, gameWin, checkWinner };
 
+    // color on win
+    const colorSquares = (a, b, c) => {
+            squarez[a].classList.add('red');
+            squarez[b].classList.add('red');
+            squarez[c].classList.add('red');
+
+        }
+        //remove colors
+    const removeColors = () => {
+        squarez.forEach(square => {
+            square.classList.remove('red');
+        })
+    }
+
+    startGame();
+    return { board };
 
 })();
