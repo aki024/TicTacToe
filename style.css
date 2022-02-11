@@ -46,7 +46,7 @@ body {
 
 .gridContainer {
     display: grid;
-    grid-template-rows: 1fr 5fr;
+    grid-template-rows: 1fr 5fr 1fr;
     gap: 20px;
     height: 90vh;
     margin-bottom: 50px;
@@ -99,6 +99,7 @@ body {
 .main {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
+    align-items: center;
 }
 
 .statusP1,
@@ -123,8 +124,8 @@ body {
 
 .gameBoard {
     margin: 0 auto;
-    height: 400px;
-    width: 400px;
+    height: 500px;
+    width: 500px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -180,4 +181,8 @@ body {
 #newGame,
 #restartGame {
     display: none;
+}
+
+.footer {
+    height: 50px;
 }
