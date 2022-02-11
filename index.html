@@ -11,19 +11,55 @@
 </head>
 
 <body>
+    <div class="gridContainer">
+        <div class="header">
+            <div class="player1"><img src="" alt="x">
+                <p class="p1">Aa</p>
+                <p class="score1">Score: </p>
+            </div>
 
-    <div class="gameBoard">
-        <div id="square1" class="square"></div>
-        <div id="square2" class="square"></div>
-        <div id="square3" class="square"></div>
-        <div id="square4" class="square"></div>
-        <div id="square5" class="square"></div>
-        <div id="square6" class="square"></div>
-        <div id="square7" class="square"></div>
-        <div id="square8" class="square"></div>
-        <div id="square9" class="square"></div>
+            <div class="title">
+                <button type="button" class="newGame">New game</button>
+                <h1> Tic-Tac-Toe </h1>
+                <button type="button" class="restartGame">Restart game</button>
+            </div>
+            <div class="player2"><img src="" alt="o">
+                <p class="p2">Aa</p>
+                <p class="score2">Score: </p>
+            </div>
 
+
+        </div>
+        <div class="main">
+            <div class="statusP1">
+                <h1 class="p1Win"></h1>
+            </div>
+            <div class="gameBoard">
+                <div id="square1" class="square"></div>
+                <div id="square2" class="square"></div>
+                <div id="square3" class="square"></div>
+                <div id="square4" class="square"></div>
+                <div id="square5" class="square"></div>
+                <div id="square6" class="square"></div>
+                <div id="square7" class="square"></div>
+                <div id="square8" class="square"></div>
+                <div id="square9" class="square"></div>
+
+            </div>
+
+            <div class="inputNames">
+                <label for="player1">Player 1 name:</label>
+                <input type="text" id="player1">
+                <label for="player2">Player 2 name:</label>
+                <input type="text" id="player2">
+                <button type="button" id="submit">Start Game</button>
+            </div>
+            <div class="statusP2">
+                <h1 class="p2Win"></h1>
+            </div>
+        </div>
     </div>
+
 
 </body>
 
